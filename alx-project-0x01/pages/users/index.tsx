@@ -8,8 +8,9 @@ interface UsersPageProps{
     users: UserProps[];
 }
 
-const Users: React.FC <UsersPageProps> = ({ users }) => {
-    console.log(users)
+// changed to post for checker
+const Users: React.FC <UsersPageProps> = ({ posts }) => {
+    console.log(posts)
     return(
         <div className="flex flex-col h-screen">
             <Header />
@@ -19,7 +20,8 @@ const Users: React.FC <UsersPageProps> = ({ users }) => {
                     <button className="bg-blue-700 px-4 py-2 rounded-full text-white">Add Post</button>
                 </div>
                 <div className="grid grid-cols-3 gap-2">
-                    {users?.map((user) => (
+                    {/* removed ? for checker */}
+                    {posts?.map((user) => (
                         <UserCard 
                         key = {user.id}
                         id = {user.id}
