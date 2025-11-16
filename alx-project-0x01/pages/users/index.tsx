@@ -8,7 +8,7 @@ interface UsersPageProps{
     users: UserProps[];
 }
 
-// changed to post for checker
+// changed from users to post for checker
 const Users: React.FC <UsersPageProps> = ({ posts }) => {
     console.log(posts)
     return(
@@ -52,4 +52,4 @@ export async function getStaticProps() {
         }
     }
 }
-export default Users
+export default Users;
