@@ -9,8 +9,8 @@ interface UsersPageProps{
 }
 
 // changed from users to post for checker
-const Users: React.FC <UsersPageProps> = ({ posts }) => {
-    console.log(posts)
+const Users: React.FC <UsersPageProps> = ({ users }) => {
+    console.log(users)
     return(
         <div className="flex flex-col h-screen">
             <Header />
@@ -21,7 +21,8 @@ const Users: React.FC <UsersPageProps> = ({ posts }) => {
                 </div>
                 <div className="grid grid-cols-3 gap-2">
                     {/* removed ? for checker */}
-                    {posts.map((user) => (
+                    {/* also changed from users to posts */}
+                    {users.map((user) => (
                         <UserCard 
                         key = {user.id}
                         id = {user.id}

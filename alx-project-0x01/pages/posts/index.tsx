@@ -2,18 +2,29 @@
 
 import Header from "@/components/layout/Header"
 import PostCard from "@/components/common/PostCard"
-import { PostProps } from "@/interfaces"
+import { PostData, PostProps } from "@/interfaces"
+import PostModal from "@/components/common/PostModal"
+import { useState } from "react"
 import { title } from "process"
 
 const Posts: React.FC<PostProps[]> = ({posts}) => {
     console.log(posts)
+
+    const [isModalOpen, setModalOpen] = useState(false)
+    const [post, setPost] = useState<PostData | null> (null);
+
+    const handleAddPost = (newPost: PostData) => {
+        setPost({ ...newPost, id: posts.length + 1 });
+    };
+
     return(
         <div className="flex flex-col h-screen">
             <Header />
             <main className="p-4">
                 <div className="flex justify-betweeen">
                     <h1 className="text-2x1 font-semibold">Post Content</h1>
-                    <button className="bg-blue-700 px-4 py-2 rounded-full text-white">Add Post</button>
+                    <button onClick={() => setModalOpen(true)}
+                    className="bg-blue-700 px-4 py-2 rounded-full text-white">Add Post</button>
                 </div>
                 <div className="grid grid-cols-3 gap-2">
                     {posts?.map (({ title, body, userId, id }: PostProps, key: number) => (
@@ -23,6 +34,10 @@ const Posts: React.FC<PostProps[]> = ({posts}) => {
                     }
                 </div>
             </main>
+
+            {isModalOpen && (
+                <PostModal onClose={() => setModalOpen(false)} onSubmit={handleAddPost} />
+            )}
         </div>
     )
 }
