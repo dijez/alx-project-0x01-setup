@@ -10,8 +10,8 @@ import { title } from "process"
 const Posts: React.FC<PostProps[]> = ({posts}) => {
     console.log(posts)
 
-    const [isModalOpen, setModalOpen] = useState(false)
-    const [post, setPost] = useState<PostData | null> (null);
+    const [isModalOpen, setModalOpen] = useState(false);
+    const [post, setPost] = useState<PostData | null>(null);
 
     const handleAddPost = (newPost: PostData) => {
         setPost({ ...newPost, id: posts.length + 1 });
